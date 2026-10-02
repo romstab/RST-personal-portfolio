@@ -7,6 +7,17 @@
 (() => {
   "use strict";
 
+  // Mark that JS is running so CSS can safely animate sections.
+  // Reveal sections already in (or near) the viewport first to avoid a blank flash.
+  document.documentElement.classList.add("js");
+  document.querySelectorAll(".section").forEach((sec) => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.95) {
+      sec.classList.add("is-visible");
+    }
+  });
+  document.body.classList.add("js-enabled");
+
   /* ---------- DOM refs ---------- */
   const header = document.getElementById("site-header");
   const navToggle = document.getElementById("nav-toggle");

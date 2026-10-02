@@ -1052,26 +1052,24 @@ body.menu-open {
 }
 
 /* ---------- Section reveal (subtle) ---------- */
+/* CRITICAL: sections are visible by default so UI works without JS.
+   Animation only runs when body has .js-enabled AND section has .is-visible */
 .section {
   opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .section {
+  body.js-enabled .section:not(.hero) {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
   }
 
-  .section.is-visible {
+  body.js-enabled .section.is-visible,
+  body.js-enabled .section.hero {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  /* Hero always visible */
-  .hero {
-    opacity: 1;
-    transform: none;
   }
 }
 
