@@ -143,7 +143,7 @@
     });
   }
 
-  /* ---------- Contact Form Validation & Simulation ---------- */
+  /* ---------- Contact Form Validation & Real Submission ---------- */
   function showError(input, message) {
     input.classList.add("is-invalid");
     const errorEl = document.getElementById(`${input.id}-error`);
@@ -157,7 +157,6 @@
   }
 
   function validateEmail(value) {
-    // Simple but practical email check
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
@@ -167,7 +166,6 @@
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
-    // Name
     if (!name.value.trim()) {
       showError(name, "Please enter your name.");
       valid = false;
@@ -178,7 +176,6 @@
       clearError(name);
     }
 
-    // Email
     if (!email.value.trim()) {
       showError(email, "Please enter your email.");
       valid = false;
@@ -189,7 +186,6 @@
       clearError(email);
     }
 
-    // Message
     if (!message.value.trim()) {
       showError(message, "Please write a message.");
       valid = false;
@@ -203,7 +199,13 @@
     return valid;
   }
 
-  // Live clear errors on input
+  function setFormStatus(type, text) {
+    if (!formStatus) return;
+    formStatus.hidden = false;
+    formStatus.className = "form-status " + type;
+    formStatus.textContent = text;
+  }
+
   if (contactForm) {
     ["name", "email", "message"].forEach((id) => {
       const el = document.getElementById(id);
@@ -212,35 +214,72 @@
       }
     });
 
-    contactForm.addEventListener("submit", (e) => {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       if (!validateForm()) {
-        formStatus.hidden = false;
-        formStatus.className = "form-status error";
-        formStatus.textContent = "Please fix the errors above.";
+        setFormStatus("error", "Please fix the errors above.");
         return;
       }
 
-      // Simulate successful submission (frontend-only)
-      // Replace this block with a real email service (Formspree, EmailJS, etc.) later.
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const website = (document.getElementById("website") || {}).value || "";
 
-      setTimeout(() => {
-        formStatus.hidden = false;
-        formStatus.className = "form-status success";
-        formStatus.textContent =
-          "Message prepared! (This is a demo — connect a real email service to send.)";
-        contactForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
 
-        // Auto-hide status after a few seconds
-        setTimeout(() => {
-          formStatus.hidden = true;
-        }, 6000);
-      }, 900);
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message, website }),
+        });
+
+        let data = {};
+        try {
+          data = await response.json();
+        } catch (_) {
+          data = {};
+        }
+
+        if (response.ok && data.ok) {
+          setFormStatus(
+            "success",
+            data.message || "Message sent successfully. Thank you for reaching out!"
+          );
+          contactForm.reset();
+          if (submitBtn) submitBtn.textContent = "Message Sent";
+          setTimeout(() => {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Send Message";
+            }
+          }, 2500);
+        } else {
+          setFormStatus(
+            "error",
+            data.error ||
+              "We couldn't send your message right now. Please try again or contact me directly by email."
+          );
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Message";
+          }
+        }
+      } catch (err) {
+        setFormStatus(
+          "error",
+          "We couldn't send your message right now. Please try again or contact me directly by email."
+        );
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send Message";
+        }
+      }
     });
   }
 
