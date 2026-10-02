@@ -1,126 +1,151 @@
-# Personal Developer Portfolio
+# Rome Mhar Tabifranca — Developer Portfolio
 
-A clean, modern, dark-themed personal portfolio website for a 1st-year Computer Science student and aspiring full-stack web developer.
+Personal portfolio website of **Rome Mhar Tabifranca**, a 1st-year BSCS student at Laguna State Polytechnic University.
 
-Built with **vanilla HTML, CSS, and JavaScript** — no frameworks, no build step. Ready to deploy on GitHub Pages, Vercel, or Netlify.
+Built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step. Ready for GitHub Pages, Vercel, or Netlify.
 
 ---
 
 ## Features
 
-- **Mobile-first responsive design** (phones → desktops)
+- Mobile-first responsive design
 - Sticky glass-style navigation with active section indicator
-- Smooth scrolling & keyboard-accessible navigation
-- Premium project cards with hover elevation and subtle border glow
-- Developer journal / article previews
-- Tech stack & skills section
-- Authentic About Me section
-- Contact form with client-side validation + success simulation
-- Accessibility: semantic HTML, focus states, skip link, `prefers-reduced-motion`
-- Fast loading, no heavy dependencies
+- Smooth scrolling & accessible mobile menu
+- Premium project cards
+- Developer journal section
+- Skills / tech stack badges
+- About section with education
+- Contact form with client-side validation
+- Accessibility support (`prefers-reduced-motion`, focus states, skip link)
+- Fast loading — no heavy dependencies
 
 ---
 
-## Quick Start
+## Tech Stack
 
-1. Clone or download this repository.
-2. Open `index.html` in a browser, **or** serve locally:
-
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node (npx)
-npx serve .
-```
-
-3. Visit `http://localhost:8000`.
+- HTML5
+- CSS3 (custom properties, mobile-first)
+- Vanilla JavaScript (ES6+)
+- Google Fonts (Inter + JetBrains Mono)
 
 ---
 
-## Personalization Checklist
-
-Replace all placeholders before publishing:
-
-| Placeholder              | Location                          | Example                          |
-|--------------------------|-----------------------------------|----------------------------------|
-| `[YOUR NAME]`            | HTML (title, hero, nav, footer)   | Alex Rivera                      |
-| `[YOUR EMAIL]`           | Contact + footer                  | alex@example.com                 |
-| `[YOUR GITHUB]`          | Links                             | alexrivera                      |
-| `[YOUR LINKEDIN]`        | Links                             | alexrivera                      |
-| Project demo URLs        | Project cards                     | https://my-pwa.vercel.app        |
-| GitHub repo URLs         | Project cards                     | https://github.com/you/repo      |
-| Journal “Read More” links| Journal cards                     | Link to real posts or remove     |
-
-Also update:
-- Page `<title>` and meta description
-- Copyright year if needed
-- Project descriptions / features if you change the projects
-
----
-
-## Project Structure
+## Folder Structure
 
 ```
 /
-├── index.html          # Main markup
+├── index.html
 ├── css/
-│   └── style.css       # All styles (custom properties, responsive)
+│   └── style.css
 ├── js/
-│   └── app.js          # Navigation, form, scroll, reveals
+│   └── app.js
 ├── assets/
-│   ├── images/         # (optional) add your images here
-│   └── icons/          # (optional)
+│   ├── images/
+│   └── icons/
 └── README.md
 ```
+
+---
+
+## How to Run Locally
+
+1. Clone or download this repository.
+2. Open a terminal in the project root.
+3. Serve the files:
+
+```bash
+# Python
+python -m http.server 8000
+
+# Node
+npx serve .
+```
+
+4. Open `http://localhost:8000` in your browser.
+
+You can also open `index.html` directly in a browser for a quick preview.
+
+---
+
+## How to Upload to GitHub
+
+1. Create a new repository on GitHub (e.g. `portfolio` or `romstab.github.io`).
+2. Upload the files while keeping the folder structure above.
+3. Commit and push.
 
 ---
 
 ## Deploy
 
 ### GitHub Pages
-1. Push to a GitHub repository.
-2. Settings → Pages → Source: Deploy from branch `main` / root.
-3. Site will be live at `https://<username>.github.io/<repo>`.
+
+1. Repository → **Settings** → **Pages**
+2. Source: Deploy from branch `main` (or `master`), folder `/ (root)`
+3. Save. Your site will be live at `https://romstab.github.io` or `https://romstab.github.io/<repo-name>`
 
 ### Vercel
-1. Import the repository on [vercel.com](https://vercel.com).
-2. Framework preset: Other.
-3. Deploy. Zero configuration needed.
+
+1. Go to [vercel.com](https://vercel.com) and import the GitHub repository.
+2. Framework Preset: **Other**
+3. Deploy. No build command needed.
 
 ### Netlify
-1. Drag the folder to Netlify Drop, or connect the Git repo.
+
+1. Connect the repository or drag the project folder to Netlify Drop.
 2. Publish directory: root (`/`).
+3. Deploy.
 
 ---
 
-## Connecting a Real Contact Form
+## Customization
 
-The form currently validates and shows a success message only (frontend simulation).
+### Personal info (already filled)
 
-To make it send real emails, you can:
+| Item     | Value |
+|----------|-------|
+| Name     | Rome Mhar Tabifranca |
+| School   | Laguna State Polytechnic University |
+| Course   | BSCS, 1st Year |
+| Email    | romemhartabifranca68@gmail.com |
+| GitHub   | https://github.com/romstab |
+| LinkedIn | https://www.linkedin.com/in/rome-mhar-tabifranca-94a208440 |
 
-- **Formspree** — add `action="https://formspree.io/f/your-id"` and `method="POST"`
-- **EmailJS** — integrate their SDK in `app.js`
-- **Netlify Forms** — add `netlify` attribute to the form
-- **Custom backend** — point the form to your own API endpoint
+### Project links (still placeholders)
 
-The validation logic in `js/app.js` can stay; just replace the simulated `setTimeout` success block with a real fetch call.
+In `index.html`, find the project cards and replace:
+
+- **Live Demo** `href="#"` → your real demo URL
+- **Source Code** `href="https://github.com/romstab"` → the specific repo URL for that project
+
+### Journal "Read More" links
+
+Replace `href="#"` on the journal cards with real article URLs when you publish them.
+
+### Contact form
+
+The form validates input and shows a success message (frontend only).  
+To send real emails later, connect it to:
+
+- Formspree
+- EmailJS
+- Netlify Forms
+- or your own backend
+
+The validation logic in `js/app.js` can stay; just replace the simulated success block with a real request.
 
 ---
 
 ## Browser Support
 
 Modern browsers (Chrome, Firefox, Safari, Edge).  
-Uses CSS custom properties, `backdrop-filter`, and Intersection Observer (with graceful fallbacks).
+Uses CSS custom properties, `backdrop-filter`, and Intersection Observer (with fallbacks).
 
 ---
 
 ## License
 
-Feel free to use this as a starting point for your own portfolio.  
-Attribution appreciated but not required.
+Feel free to use this structure as a starting point for your own portfolio.
 
 ---
 
-Built with care — keep shipping.
+Built by Rome Mhar Tabifranca — keep shipping.
