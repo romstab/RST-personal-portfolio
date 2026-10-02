@@ -11,7 +11,7 @@ Built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step. Read
 - Mobile-first responsive design
 - Sticky glass-style navigation with active section indicator
 - Smooth scrolling & accessible mobile menu
-- Premium project cards
+- Premium project cards with live demos
 - Developer journal section
 - Skills / tech stack badges
 - About section with education
@@ -49,10 +49,6 @@ Built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step. Read
 
 ## How to Run Locally
 
-1. Clone or download this repository.
-2. Open a terminal in the project root.
-3. Serve the files:
-
 ```bash
 # Python
 python -m http.server 8000
@@ -61,45 +57,29 @@ python -m http.server 8000
 npx serve .
 ```
 
-4. Open `http://localhost:8000` in your browser.
-
-You can also open `index.html` directly in a browser for a quick preview.
-
----
-
-## How to Upload to GitHub
-
-1. Create a new repository on GitHub (e.g. `portfolio` or `romstab.github.io`).
-2. Upload the files while keeping the folder structure above.
-3. Commit and push.
+Open `http://localhost:8000` in your browser.
 
 ---
 
 ## Deploy
 
 ### GitHub Pages
-
 1. Repository → **Settings** → **Pages**
-2. Source: Deploy from branch `main` (or `master`), folder `/ (root)`
-3. Save. Your site will be live at `https://romstab.github.io` or `https://romstab.github.io/<repo-name>`
+2. Source: branch `main`, folder `/ (root)`
+3. Site live at `https://romstab.github.io` or `https://romstab.github.io/<repo-name>`
 
 ### Vercel
-
-1. Go to [vercel.com](https://vercel.com) and import the GitHub repository.
+1. Import the GitHub repository at [vercel.com](https://vercel.com)
 2. Framework Preset: **Other**
-3. Deploy. No build command needed.
+3. Deploy (no build command needed)
 
 ### Netlify
-
-1. Connect the repository or drag the project folder to Netlify Drop.
-2. Publish directory: root (`/`).
-3. Deploy.
+1. Connect the repository or drag the project folder
+2. Publish directory: root (`/`)
 
 ---
 
-## Customization
-
-### Personal info (already filled)
+## Personal Info
 
 | Item     | Value |
 |----------|-------|
@@ -110,41 +90,28 @@ You can also open `index.html` directly in a browser for a quick preview.
 | GitHub   | https://github.com/romstab |
 | LinkedIn | https://www.linkedin.com/in/rome-mhar-tabifranca-94a208440 |
 
-### Project links (still placeholders)
+---
 
-In `index.html`, find the project cards and replace:
+## Projects
 
-- **Live Demo** `href="#"` → your real demo URL
-- **Source Code** `href="https://github.com/romstab"` → the specific repo URL for that project
+**1. BSCS 1-A Section Hub**  
+Live: https://romstab.github.io/reminders-dashboard/
 
-### Journal "Read More" links
+**2. Business Booking & Management System**  
+Live: https://multi-tenant-ai-b-git-d33d97-romemhartabifranca68-pngs-projects.vercel.app/
 
-Replace `href="#"` on the journal cards with real article URLs when you publish them.
+---
 
-### Contact form
+## Contact Form
 
 The form validates input and shows a success message (frontend only).  
-To send real emails later, connect it to:
-
-- Formspree
-- EmailJS
-- Netlify Forms
-- or your own backend
-
-The validation logic in `js/app.js` can stay; just replace the simulated success block with a real request.
+To send real emails later, connect Formspree, EmailJS, Netlify Forms, or a custom backend.
 
 ---
 
 ## Browser Support
 
-Modern browsers (Chrome, Firefox, Safari, Edge).  
-Uses CSS custom properties, `backdrop-filter`, and Intersection Observer (with fallbacks).
-
----
-
-## License
-
-Feel free to use this structure as a starting point for your own portfolio.
+Modern browsers (Chrome, Firefox, Safari, Edge).
 
 ---
 
